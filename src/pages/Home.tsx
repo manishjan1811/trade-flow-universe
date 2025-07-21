@@ -121,34 +121,7 @@ export default function Home() {
       {/* New Geometric Animated Hero Section */}
       <CryptoHeroGeometric />
 
-      {/* Action Buttons Section - Integrated with Hero */}
-      <section className="py-16 crypto-bg relative -mt-32 z-20">
-        {/* Background gradient overlay to match hero */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02]" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <Link to="/register">
-              <Button size="lg" className="btn-crypto text-xl px-12 py-8 crypto-glow hover:scale-110 transition-bounce group backdrop-blur-sm">
-                <span className="group-hover:animate-pulse">Start Trading Now</span>
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Button size="lg" variant="outline" className="text-xl px-12 py-8 hover:scale-105 transition-bounce border-primary/30 hover:border-primary group backdrop-blur-sm bg-card/20">
-              <Play className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
-              Watch Demo
-            </Button>
-          </div>
-          
-          {/* Scroll Indicator */}
-          <div className="animate-bounce">
-            <ChevronDown className="w-8 h-8 mx-auto text-muted-foreground" />
-          </div>
-          <p className="text-sm text-muted-foreground mt-2">Scroll to explore</p>
-        </div>
-      </section>
-
-      {/* Live Market Data with Animations */}
+      {/* Live Market Data with Enhanced Animations */}
       <section className="py-20 bg-gradient-to-b from-background to-card/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -161,29 +134,38 @@ export default function Home() {
             {cryptoStats.map((crypto, index) => (
               <Card 
                 key={crypto.symbol} 
-                className="crypto-card border-border/50 hover:border-primary/50 transition-smooth hover:scale-105 group"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="crypto-card border-border/50 hover:border-primary/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 group cursor-pointer transform-gpu"
+                style={{ 
+                  animationDelay: `${index * 150}ms`,
+                  animation: 'slideUp 0.6s ease-out forwards'
+                }}
               >
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-6">
+                <div className="p-6 relative overflow-hidden">
+                  {/* Background glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <div className="flex items-center justify-between mb-6 relative z-10">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">{crypto.name}</h3>
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{crypto.name}</h3>
                       <p className="text-muted-foreground">{crypto.symbol}</p>
                     </div>
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:crypto-glow transition-smooth">
-                      <TrendingUp className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                      <TrendingUp className="w-6 h-6 text-primary group-hover:rotate-12 transition-transform duration-300" />
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    <p className="text-3xl font-bold text-foreground">{crypto.price}</p>
+                  <div className="space-y-3 relative z-10">
+                    <p className="text-3xl font-bold text-foreground group-hover:scale-105 transition-transform duration-300">{crypto.price}</p>
                     <div className="flex items-center justify-between">
-                      <span className={`flex items-center text-sm font-medium ${crypto.positive ? 'price-up' : 'price-down'}`}>
-                        {crypto.positive ? <ArrowUpRight className="w-4 h-4 mr-1" /> : <ArrowDownRight className="w-4 h-4 mr-1" />}
+                      <span className={`flex items-center text-sm font-medium transition-all duration-300 ${crypto.positive ? 'price-up' : 'price-down'} group-hover:scale-105`}>
+                        {crypto.positive ? <ArrowUpRight className="w-4 h-4 mr-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" /> : <ArrowDownRight className="w-4 h-4 mr-1 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-300" />}
                         {crypto.change}
                       </span>
-                      <span className="text-sm text-muted-foreground">Vol: {crypto.volume}</span>
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">Vol: {crypto.volume}</span>
                     </div>
                   </div>
+                  
+                  {/* Animated border gradient */}
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary via-accent to-primary opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10" />
                 </div>
               </Card>
             ))}
@@ -211,8 +193,11 @@ export default function Home() {
               return (
                 <Card 
                   key={feature.title} 
-                  className="crypto-card hover:border-primary/50 transition-smooth hover:scale-102 group relative overflow-hidden"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className="crypto-card hover:border-primary/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 group relative overflow-hidden cursor-pointer transform-gpu"
+                  style={{ 
+                    animationDelay: `${index * 150}ms`,
+                    animation: 'slideUp 0.6s ease-out forwards'
+                  }}
                 >
                   {/* Badge */}
                   <div className="absolute top-4 right-4 z-10">
@@ -334,16 +319,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trading Pairs Section */}
+      {/* Enhanced Trading Pairs Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">Popular Trading Pairs</h2>
             <p className="text-xl text-muted-foreground">Trade the most liquid cryptocurrency pairs</p>
           </div>
-          <Card className="crypto-card overflow-hidden">
-            <div className="p-8">
-              <div className="overflow-x-auto">
+          <Card className="crypto-card overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 group">
+            <div className="p-8 relative">
+              {/* Background gradient effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="overflow-x-auto relative z-10">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-border">
@@ -358,23 +346,33 @@ export default function Home() {
                     {tradingPairs.map((pair, index) => (
                       <tr 
                         key={pair.pair} 
-                        className="border-b border-border/50 hover:bg-muted/20 transition-smooth"
-                        style={{ animationDelay: `${index * 100}ms` }}
+                        className="border-b border-border/50 hover:bg-muted/20 transition-all duration-300 hover:scale-[1.01] cursor-pointer group/row"
+                        style={{ 
+                          animationDelay: `${index * 150}ms`,
+                          animation: 'slideUp 0.6s ease-out forwards'
+                        }}
                       >
                         <td className="py-6">
-                          <span className="font-semibold text-foreground text-lg">{pair.pair}</span>
+                          <div className="flex items-center space-x-3">
+                            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center group-hover/row:bg-primary/20 transition-all duration-300">
+                              <span className="text-primary font-semibold text-xs">{pair.pair.split('/')[0]}</span>
+                            </div>
+                            <span className="font-semibold text-foreground text-lg group-hover/row:text-primary transition-colors duration-300">{pair.pair}</span>
+                          </div>
                         </td>
                         <td className="text-right py-6">
-                          <span className="font-medium text-foreground">${pair.price}</span>
+                          <span className="font-medium text-foreground group-hover/row:scale-105 transition-transform duration-300 inline-block">${pair.price}</span>
                         </td>
                         <td className="text-right py-6">
-                          <span className="price-up font-medium">+{pair.change}%</span>
+                          <span className="price-up font-medium group-hover/row:scale-105 transition-transform duration-300 inline-block">+{pair.change}%</span>
                         </td>
                         <td className="text-right py-6">
-                          <span className="text-muted-foreground">${pair.volume}</span>
+                          <span className="text-muted-foreground group-hover/row:text-foreground transition-colors duration-300">${pair.volume}</span>
                         </td>
                         <td className="text-center py-6">
-                          <Button size="sm" className="btn-crypto">Trade</Button>
+                          <Button size="sm" className="btn-crypto hover:scale-110 transition-transform duration-300">
+                            Trade
+                          </Button>
                         </td>
                       </tr>
                     ))}

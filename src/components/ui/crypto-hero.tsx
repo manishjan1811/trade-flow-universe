@@ -1,9 +1,11 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { Circle, TrendingUp, Shield, Zap } from "lucide-react";
+import { Circle, TrendingUp, Shield, Zap, ArrowRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 function CryptoShape({
     className,
@@ -240,6 +242,26 @@ function CryptoHeroGeometric({
                             <div className="text-3xl md:text-4xl font-bold text-primary mb-2">99.9%</div>
                             <div className="text-sm text-muted-foreground">Uptime</div>
                         </div>
+                    </motion.div>
+
+                    {/* Action Buttons - Integrated in Hero */}
+                    <motion.div
+                        variants={fadeUpVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: 1.2 }}
+                        className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12"
+                    >
+                        <Link to="/register">
+                            <Button size="lg" className="btn-crypto text-xl px-12 py-8 crypto-glow hover:scale-110 transition-bounce group backdrop-blur-sm">
+                                <span className="group-hover:animate-pulse">Start Trading Now</span>
+                                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </Link>
+                        <Button size="lg" variant="outline" className="text-xl px-12 py-8 hover:scale-105 transition-bounce border-primary/30 hover:border-primary group backdrop-blur-sm bg-card/20">
+                            <Play className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
+                            Watch Demo
+                        </Button>
                     </motion.div>
                 </div>
             </div>
