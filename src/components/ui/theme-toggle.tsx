@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export function ThemeToggle() {
@@ -13,44 +12,71 @@ export function ThemeToggle() {
   };
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={toggleTheme}
+    <div 
+      className="relative flex items-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative overflow-hidden border-primary/30 hover:border-primary hover:scale-105 transition-all duration-300"
     >
-      <motion.div
-        initial={{ scale: 1, rotate: 0 }}
-        animate={{
-          scale: isHovered ? 1.1 : 1,
-          rotate: theme === "dark" ? 180 : 0,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="relative"
+      <button
+        onClick={toggleTheme}
+        className="relative h-8 w-16 rounded-full border-2 border-primary/20 bg-secondary transition-all duration-300 hover:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
       >
+        {/* Track */}
         <motion.div
+          className="absolute inset-1 rounded-full bg-gradient-to-r from-primary/10 to-accent/10"
           animate={{
-            opacity: theme === "dark" ? 0 : 1,
-            scale: theme === "dark" ? 0.5 : 1,
+            background: theme === "dark" 
+              ? "linear-gradient(to right, hsl(var(--primary) / 0.2), hsl(var(--accent) / 0.2))"
+              : "linear-gradient(to right, hsl(var(--accent) / 0.2), hsl(var(--primary) / 0.2))"
           }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <Sun className="h-4 w-4" />
-        </motion.div>
+        />
+        
+        {/* Slider */}
         <motion.div
+          className="absolute top-1 h-6 w-6 rounded-full bg-primary shadow-md flex items-center justify-center"
           animate={{
-            opacity: theme === "dark" ? 1 : 0,
-            scale: theme === "dark" ? 1 : 0.5,
+            x: theme === "dark" ? "calc(100% + 4px)" : "0px",
+            rotate: isHovered ? 360 : 0,
+          }}
+          transition={{ 
+            x: { duration: 0.3, ease: "easeInOut" },
+            rotate: { duration: 0.6, ease: "easeInOut" }
+          }}
+        >
+          <motion.div
+            animate={{
+              opacity: theme === "dark" ? 1 : 0,
+              scale: theme === "dark" ? 1 : 0.3,
+            }}
+            transition={{ duration: 0.2 }}
+            className="absolute"
+          >
+            <Moon className="h-3 w-3 text-primary-foreground" />
+          </motion.div>
+          <motion.div
+            animate={{
+              opacity: theme === "dark" ? 0 : 1,
+              scale: theme === "dark" ? 0.3 : 1,
+            }}
+            transition={{ duration: 0.2 }}
+            className="absolute"
+          >
+            <Sun className="h-3 w-3 text-primary-foreground" />
+          </motion.div>
+        </motion.div>
+        
+        {/* Glow effect */}
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          animate={{
+            boxShadow: isHovered 
+              ? `0 0 20px hsl(var(--primary) / 0.3)`
+              : `0 0 0px hsl(var(--primary) / 0.3)`
           }}
           transition={{ duration: 0.3 }}
-          className="flex items-center justify-center"
-        >
-          <Moon className="h-4 w-4" />
-        </motion.div>
-      </motion.div>
-    </Button>
+        />
+      </button>
+    </div>
   );
 }
