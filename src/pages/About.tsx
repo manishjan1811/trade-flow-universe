@@ -1,20 +1,20 @@
 import { useState, useRef, useEffect } from "react";
-import { Shield, Users, Globe, TrendingUp, Award, Zap, Target, Rocket, Star, ChevronRight, ArrowRight, Play } from "lucide-react";
+import { ShieldCheck, Users2, Earth, TrendingUp, Trophy, Zap, Crosshair, Rocket, StarIcon, ChevronRight, ArrowRight, PlayCircle, Lock, Clock, MapPin, Building2, Phone, Mail, UserCheck, Sparkles, CheckCircle, Crown, Database, Wifi } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const stats = [
-  { icon: Users, label: "Active Users", value: "10M+", description: "Trusted globally", color: "primary" },
-  { icon: Globe, label: "Countries", value: "180+", description: "Worldwide presence", color: "accent" },
+  { icon: Users2, label: "Active Users", value: "10M+", description: "Trusted globally", color: "primary" },
+  { icon: Earth, label: "Countries", value: "180+", description: "Worldwide presence", color: "accent" },
   { icon: TrendingUp, label: "Trading Volume", value: "$50B+", description: "Daily transactions", color: "destructive" },
-  { icon: Award, label: "Years Experience", value: "8+", description: "Industry leadership", color: "primary" },
+  { icon: Trophy, label: "Years Experience", value: "8+", description: "Industry leadership", color: "primary" },
 ];
 
 const features = [
   {
-    icon: Shield,
+    icon: ShieldCheck,
     title: "Unmatched Security",
     description: "Multi-layered security with cold storage, insurance coverage, and advanced monitoring systems that protect your digital assets.",
     highlights: ["Cold Storage Protection", "Insurance Coverage", "24/7 Monitoring", "Multi-Sig Wallets"],
@@ -22,13 +22,13 @@ const features = [
   },
   {
     icon: Zap,
-    title: "Lightning Fast Performance",
+    title: "Lightning Fast Performance", 
     description: "Execute trades in milliseconds with our high-performance trading engine built for professional traders worldwide.",
     highlights: ["Sub-millisecond execution", "99.9% Uptime", "Global infrastructure", "Real-time data"],
     color: "from-purple-500 to-pink-500"
   },
   {
-    icon: Globe,
+    icon: Earth,
     title: "Global Accessibility",
     description: "Available in 180+ countries with local payment methods, multi-language support, and 24/7 customer service.",
     highlights: ["180+ Countries", "Local payments", "Multi-language", "24/7 Support"],
@@ -229,7 +229,7 @@ export default function About() {
                 </Button>
               </Link>
               <Button size="lg" variant="outline" className="text-lg px-8 py-6 hover:scale-105 transition-transform duration-300 border-primary/30 hover:border-primary">
-                <Play className="mr-2 w-5 h-5" />
+                <PlayCircle className="mr-2 w-5 h-5" />
                 Watch Our Story
               </Button>
             </motion.div>
@@ -337,7 +337,7 @@ export default function About() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="w-24 h-24 gradient-primary rounded-3xl flex items-center justify-center mx-auto mb-8">
-                    <Target className="w-12 h-12 text-white" />
+                    <Crosshair className="w-12 h-12 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-6">Vision 2030</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
@@ -419,20 +419,38 @@ export default function About() {
                   </div>
 
                   <InteractiveCard className={isEven ? "lg:order-last" : ""}>
-                    <Card className="crypto-card p-8 h-80 flex items-center justify-center">
+                    <Card className="crypto-card p-8 h-80 flex items-center justify-center relative overflow-hidden">
+                      <div className={`absolute inset-0 bg-gradient-to-r ${feature.color} opacity-5`}></div>
                       <motion.div
-                        className={`w-40 h-40 rounded-full bg-gradient-to-r ${feature.color} opacity-20 flex items-center justify-center`}
+                        className="relative z-10 text-center"
                         animate={{
-                          scale: [1, 1.1, 1],
-                          rotate: [0, 180, 360],
+                          y: [0, -10, 0],
                         }}
                         transition={{
-                          duration: 8,
+                          duration: 6,
                           repeat: Infinity,
                           ease: "easeInOut",
                         }}
                       >
-                        <Icon className="w-20 h-20 text-primary" />
+                        <motion.div
+                          className={`w-24 h-24 mx-auto mb-4 rounded-3xl bg-gradient-to-r ${feature.color} flex items-center justify-center shadow-2xl`}
+                          animate={{
+                            rotateY: [0, 360],
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          <Icon className="w-12 h-12 text-white" />
+                        </motion.div>
+                        <div className="space-y-2">
+                          <div className={`h-2 bg-gradient-to-r ${feature.color} rounded-full mx-8 opacity-60`}></div>
+                          <div className={`h-1 bg-gradient-to-r ${feature.color} rounded-full mx-12 opacity-40`}></div>
+                          <div className={`h-1 bg-gradient-to-r ${feature.color} rounded-full mx-16 opacity-20`}></div>
+                        </div>
                       </motion.div>
                     </Card>
                   </InteractiveCard>
@@ -541,7 +559,7 @@ export default function About() {
                           ease: "linear",
                         }}
                       />
-                      <Users className="w-12 h-12 text-foreground relative z-10" />
+                      <Users2 className="w-12 h-12 text-foreground relative z-10" />
                     </motion.div>
                     <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                       {member.name}
@@ -560,7 +578,7 @@ export default function About() {
                           transition={{ duration: 0.5, delay: idx * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <Star className="w-3 h-3 text-accent fill-current" />
+                          <StarIcon className="w-3 h-3 text-accent fill-current" />
                           <span className="text-xs text-muted-foreground">{achievement}</span>
                         </motion.div>
                       ))}
