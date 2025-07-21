@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, TrendingUp, Wallet, ArrowRightLeft, History, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
@@ -291,9 +290,8 @@ export default function ModernNavbar({ children }: { children: React.ReactNode }
               </div>
             )}
 
-            {/* Theme Toggle & Auth Buttons / User Menu */}
+            {/* Auth Buttons / User Menu */}
             <div className="flex items-center space-x-4">
-              <ThemeToggle />
               {isPublicRoute ? (
                 <motion.div
                   className="hidden md:flex items-center space-x-3"
