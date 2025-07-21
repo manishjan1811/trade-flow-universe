@@ -174,50 +174,120 @@ function Modern3DLogo() {
       }}
       className="perspective-1000"
     >
-      <Link to="/" className="flex items-center space-x-2 group">
+      <Link to="/" className="flex items-center space-x-3 group">
         <motion.div
-          className="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center relative overflow-hidden"
+          className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary overflow-hidden"
           style={{
             transform: "translateZ(30px)",
           }}
           animate={{
             scale: isHovered ? 1.1 : 1,
-            rotateZ: isHovered ? [0, 360] : 0,
           }}
           transition={{ 
             scale: { duration: 0.3 },
-            rotateZ: { duration: 1.2, ease: "easeInOut" }
           }}
         >
-          {/* 3D inner glow */}
+          {/* Animated background gradient */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent rounded-xl"
-            style={{
-              transform: "translateZ(5px)",
-            }}
+            className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10"
             animate={{
-              opacity: isHovered ? 0.6 : 0.3,
+              rotate: isHovered ? 360 : 0,
             }}
+            transition={{ duration: 2, ease: "linear", repeat: isHovered ? Infinity : 0 }}
           />
-          <TrendingUp 
-            className="w-6 h-6 text-white relative z-10" 
-            style={{
-              transform: "translateZ(10px)",
+          
+          {/* Modern geometric logo design */}
+          <div className="absolute inset-2 flex items-center justify-center">
+            <svg 
+              className="w-8 h-8 text-white relative z-10" 
+              style={{
+                transform: "translateZ(10px)",
+              }}
+              viewBox="0 0 24 24" 
+              fill="none"
+            >
+              {/* Central diamond */}
+              <motion.path
+                d="M12 2L7 7L12 12L17 7L12 2Z"
+                fill="currentColor"
+                animate={{
+                  scale: isHovered ? [1, 1.2, 1] : 1,
+                }}
+                transition={{ duration: 0.8, repeat: isHovered ? Infinity : 0 }}
+              />
+              {/* Bottom diamond */}
+              <motion.path
+                d="M12 12L7 17L12 22L17 17L12 12Z"
+                fill="currentColor"
+                fillOpacity="0.7"
+                animate={{
+                  scale: isHovered ? [1, 0.8, 1] : 1,
+                }}
+                transition={{ duration: 0.8, repeat: isHovered ? Infinity : 0, delay: 0.2 }}
+              />
+              {/* Side accents */}
+              <motion.circle
+                cx="4"
+                cy="12"
+                r="2"
+                fill="currentColor"
+                fillOpacity="0.5"
+                animate={{
+                  scale: isHovered ? [1, 1.5, 1] : 1,
+                }}
+                transition={{ duration: 0.8, repeat: isHovered ? Infinity : 0, delay: 0.4 }}
+              />
+              <motion.circle
+                cx="20"
+                cy="12"
+                r="2"
+                fill="currentColor"
+                fillOpacity="0.5"
+                animate={{
+                  scale: isHovered ? [1, 1.5, 1] : 1,
+                }}
+                transition={{ duration: 0.8, repeat: isHovered ? Infinity : 0, delay: 0.4 }}
+              />
+            </svg>
+          </div>
+          
+          {/* Glow effect */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl"
+            animate={{
+              boxShadow: isHovered 
+                ? "0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(16, 185, 129, 0.3)"
+                : "0 0 15px rgba(59, 130, 246, 0.2)"
             }}
+            transition={{ duration: 0.3 }}
           />
         </motion.div>
-        <motion.span 
-          className="text-xl font-bold text-foreground"
+        
+        <motion.div
           style={{
             transform: "translateZ(20px)",
           }}
-          animate={{
-            letterSpacing: isHovered ? "0.1em" : "0em",
-          }}
-          transition={{ duration: 0.3 }}
+          className="flex flex-col"
         >
-          CryptoX
-        </motion.span>
+          <motion.span 
+            className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            animate={{
+              letterSpacing: isHovered ? "0.05em" : "0em",
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            CryptoX
+          </motion.span>
+          <motion.span 
+            className="text-xs text-muted-foreground font-medium"
+            animate={{
+              opacity: isHovered ? 1 : 0.7,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            Exchange
+          </motion.span>
+        </motion.div>
       </Link>
     </motion.div>
   );
