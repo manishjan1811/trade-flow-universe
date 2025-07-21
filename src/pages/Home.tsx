@@ -269,10 +269,10 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {p2pOffers.map((offer) => (
               <Card key={offer.id} className="crypto-card hover:border-primary/50 transition-all duration-300">
-                <div className="p-4 md:p-6">
+                <div className="p-3 md:p-4">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
@@ -341,7 +341,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
               {
                 icon: Shield,
@@ -366,12 +366,12 @@ export default function Home() {
             ].map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Card key={feature.title} className="crypto-card text-center p-4 md:p-6 hover:border-primary/50 transition-all duration-300">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-primary" />
+                <Card key={feature.title} className="crypto-card text-center p-3 md:p-4 hover:border-primary/50 transition-all duration-300">
+                  <div className="w-8 h-8 md:w-10 md:h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <h3 className="text-sm md:text-base font-semibold text-foreground mb-2">{feature.title}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">{feature.description}</p>
                 </Card>
               );
             })}
