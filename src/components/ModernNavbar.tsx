@@ -117,14 +117,18 @@ function ModernNavItem({ item, isActive, index }: { item: any; isActive: boolean
         {/* Active indicator */}
         {isActive && (
           <motion.div
-            className="absolute bottom-0 left-1/2 w-6 h-0.5 bg-primary rounded-full"
+            className="absolute bottom-0 left-0 right-0 flex justify-center"
             style={{
-              transform: "translateZ(40px) translateX(-50%)",
+              transform: "translateZ(40px)",
             }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          />
+          >
+            <motion.div
+              className="w-6 h-0.5 bg-primary rounded-full"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
+          </motion.div>
         )}
       </Link>
     </motion.div>
