@@ -187,4 +187,35 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  /* 3D Perspective and Transform utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .transform-gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Modern glassmorphism effects */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Enhanced hover effects for navbar */
+  .nav-item-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-item-3d:hover {
+    transform: rotateX(10deg) rotateY(10deg) scale(1.05);
+  }
 }
