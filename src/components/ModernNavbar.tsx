@@ -270,13 +270,15 @@ function Modern3DLogo() {
           className="flex flex-col"
         >
           <motion.span 
-            className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            className="text-xl font-bold relative"
             animate={{
               letterSpacing: isHovered ? "0.05em" : "0em",
             }}
             transition={{ duration: 0.3 }}
           >
-            CryptoX
+            <span className="bg-gradient-to-r from-blue-400 via-purple-500 via-cyan-400 to-emerald-400 bg-clip-text text-transparent bg-size-200 animate-gradient-x">
+              CryptoX
+            </span>
           </motion.span>
           <motion.span 
             className="text-xs text-muted-foreground font-medium"

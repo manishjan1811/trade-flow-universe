@@ -268,4 +268,22 @@
   .nav-item-3d:hover {
     transform: rotateX(10deg) rotateY(10deg) scale(1.05);
   }
+
+  /* Professional gradient text animation */
+  .bg-size-200 {
+    background-size: 200%;
+  }
+  
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+  }
+  
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }
