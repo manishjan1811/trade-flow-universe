@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { CryptoHeroGeometric } from "@/components/ui/crypto-hero";
 
 const cryptoStats = [
   { name: "Bitcoin", symbol: "BTC", price: "$67,432.50", change: "+2.34%", positive: true, volume: "$28.5B" },
@@ -117,120 +118,30 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-hidden">
-      {/* Enhanced Animated Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center crypto-bg overflow-hidden">
-        {/* Floating particles background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-2 h-2 bg-primary/20 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-3 h-3 bg-accent/30 rounded-full animate-pulse delay-1000"></div>
-          <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-primary/40 rounded-full animate-pulse delay-500"></div>
-          <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-accent/20 rounded-full animate-pulse delay-700"></div>
-        </div>
-        
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          {/* Staggered Animation Container */}
-          <div className="space-y-8">
-            {/* Main Title with Split Animation */}
-            <div className="overflow-hidden">
-              <h1 className="text-6xl md:text-8xl font-bold text-foreground leading-tight">
-                <span className="inline-block animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                  The Future of
-                </span>
-              </h1>
-            </div>
-            
-            {/* Typewriter Effect Section */}
-            <div className="overflow-hidden">
-              <h2 className="text-5xl md:text-7xl font-bold leading-tight">
-                <span className="gradient-primary bg-clip-text text-transparent">
-                  {displayText}
-                  <span className="animate-pulse">|</span>
-                </span>
-              </h2>
-            </div>
+      {/* New Geometric Animated Hero Section */}
+      <CryptoHeroGeometric />
 
-            {/* Animated Description */}
-            <div className="overflow-hidden">
-              <p 
-                className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed animate-fade-in"
-                style={{ animationDelay: "0.8s" }}
-              >
-                Join <span className="text-accent font-semibold">10M+</span> traders worldwide on the most advanced cryptocurrency exchange. 
-                <br />
-                <span className="text-primary font-medium">Trade with confidence</span> using institutional-grade tools and bank-level security.
-              </p>
-            </div>
-
-            {/* Animated Features Pills */}
-            <div 
-              className="flex flex-wrap justify-center gap-4 animate-fade-in"
-              style={{ animationDelay: "1.2s" }}
-            >
-              {["Lightning Fast", "Bank Security", "24/7 Trading", "200+ Coins"].map((feature, index) => (
-                <div 
-                  key={feature}
-                  className="px-6 py-3 bg-card/50 border border-primary/20 rounded-full text-foreground font-medium hover:border-primary/50 transition-smooth hover:scale-105"
-                  style={{ animationDelay: `${1.4 + index * 0.1}s` }}
-                >
-                  {feature}
-                </div>
-              ))}
-            </div>
-
-            {/* Call to Action Buttons */}
-            <div 
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in"
-              style={{ animationDelay: "1.8s" }}
-            >
-              <Link to="/register">
-                <Button size="lg" className="btn-crypto text-xl px-12 py-8 crypto-glow hover:scale-110 transition-bounce group">
-                  <span className="group-hover:animate-pulse">Start Trading Now</span>
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Button size="lg" variant="outline" className="text-xl px-12 py-8 hover:scale-105 transition-bounce border-primary/30 hover:border-primary group">
-                <Play className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
-                Watch Demo
+      {/* Action Buttons Section */}
+      <section className="py-16 bg-background relative -mt-32 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <Link to="/register">
+              <Button size="lg" className="btn-crypto text-xl px-12 py-8 crypto-glow hover:scale-110 transition-bounce group">
+                <span className="group-hover:animate-pulse">Start Trading Now</span>
+                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </div>
-
-            {/* Stats Counter Animation */}
-            <div 
-              className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-8 animate-fade-in"
-              style={{ animationDelay: "2.2s" }}
-            >
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">$50B+</div>
-                <div className="text-sm text-muted-foreground">Volume</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">10M+</div>
-                <div className="text-sm text-muted-foreground">Users</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">99.9%</div>
-                <div className="text-sm text-muted-foreground">Uptime</div>
-              </div>
-            </div>
+            </Link>
+            <Button size="lg" variant="outline" className="text-xl px-12 py-8 hover:scale-105 transition-bounce border-primary/30 hover:border-primary group">
+              <Play className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
+              Watch Demo
+            </Button>
           </div>
           
-          {/* Animated Scroll Indicator */}
-          <div 
-            className="mt-20 animate-fade-in"
-            style={{ animationDelay: "2.6s" }}
-          >
-            <div className="animate-bounce">
-              <ChevronDown className="w-8 h-8 mx-auto text-muted-foreground" />
-            </div>
-            <p className="text-sm text-muted-foreground mt-2">Scroll to explore</p>
+          {/* Scroll Indicator */}
+          <div className="animate-bounce">
+            <ChevronDown className="w-8 h-8 mx-auto text-muted-foreground" />
           </div>
+          <p className="text-sm text-muted-foreground mt-2">Scroll to explore</p>
         </div>
       </section>
 
