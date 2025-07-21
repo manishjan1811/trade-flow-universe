@@ -94,11 +94,11 @@ export default function Exchange() {
   );
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-3 md:p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">P2P Exchange</h1>
-          <p className="text-muted-foreground">Trade cryptocurrencies directly with other users</p>
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2 px-2">P2P Exchange</h1>
+          <p className="text-muted-foreground px-2">Trade cryptocurrencies directly with other users</p>
         </div>
 
         <Tabs defaultValue="marketplace" className="w-full">
@@ -108,11 +108,11 @@ export default function Exchange() {
             <TabsTrigger value="create">Create Order</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="marketplace" className="space-y-6 mt-6">
+          <TabsContent value="marketplace" className="space-y-4 md:space-y-6 mt-4 md:mt-6">
             {/* Filters */}
             <Card className="crypto-card">
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="p-4 md:p-6">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">Asset</label>
                     <Select value={selectedAsset} onValueChange={setSelectedAsset}>
@@ -162,12 +162,12 @@ export default function Exchange() {
             </Card>
 
             {/* P2P Offers */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-foreground">Available Offers</h2>
+            <div className="space-y-3 md:space-y-4">
+              <h2 className="text-lg md:text-xl font-semibold text-foreground px-2">Available Offers</h2>
               {filteredOffers.map((offer) => (
                 <Card key={offer.id} className="crypto-card hover:border-primary/50 transition-smooth">
-                  <div className="p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-center">
+                  <div className="p-4 md:p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-6 gap-3 md:gap-4 items-center">
                       {/* Trader Info */}
                       <div className="md:col-span-2">
                         <div className="flex items-center space-x-3">
@@ -230,11 +230,11 @@ export default function Exchange() {
             </div>
           </TabsContent>
 
-          <TabsContent value="orders" className="space-y-6 mt-6">
+          <TabsContent value="orders" className="space-y-4 md:space-y-6 mt-4 md:mt-6">
             <Card className="crypto-card">
-              <div className="p-6">
+              <div className="p-4 md:p-6">
                 <h3 className="text-lg font-semibold text-foreground mb-4">My P2P Orders</h3>
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   {myOrders.map((order) => (
                     <div key={order.id} className="flex items-center justify-between p-4 bg-muted/20 rounded-lg">
                       <div className="flex items-center space-x-4">
@@ -270,11 +270,11 @@ export default function Exchange() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="create" className="space-y-6 mt-6">
+          <TabsContent value="create" className="space-y-4 md:space-y-6 mt-4 md:mt-6">
             <Card className="crypto-card">
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-6">Create P2P Order</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-4 md:p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-4 md:mb-6">Create P2P Order</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-foreground mb-2">Order Type</label>

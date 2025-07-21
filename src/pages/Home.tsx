@@ -122,25 +122,25 @@ export default function Home() {
       <CryptoHeroGeometric />
 
       {/* Live Market Data with Enhanced Animations */}
-      <section className="py-20 bg-gradient-to-b from-background to-card/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-background to-card/30">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
               Live Market Data
             </h2>
-            <p className="text-xl text-muted-foreground">Real-time prices from the world's top cryptocurrencies</p>
+            <p className="text-base md:text-xl text-muted-foreground px-4">Real-time prices from the world's top cryptocurrencies</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {cryptoStats.map((crypto, index) => (
               <Card 
-                key={crypto.symbol} 
+                 key={crypto.symbol} 
                 className="crypto-card border-border/50 hover:border-primary/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 group cursor-pointer transform-gpu"
                 style={{ 
                   animationDelay: `${index * 150}ms`,
                   animation: 'slideUp 0.6s ease-out forwards'
                 }}
               >
-                <div className="p-6 relative overflow-hidden">
+                <div className="p-4 md:p-6 relative overflow-hidden">
                   {/* Background glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
@@ -174,18 +174,18 @@ export default function Home() {
       </section>
 
       {/* Enhanced Professional Features Section */}
-      <section className="py-24 bg-card/20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+      <section className="py-12 md:py-24 bg-card/20 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6 px-4">
               Professional Trading Tools
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Access institutional-grade features designed for serious traders and professional investors
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
             {advancedFeatures.map((feature, index) => {
               const Icon = feature.icon;
               const stats = Object.entries(feature.stats);
@@ -215,7 +215,7 @@ export default function Home() {
                     <Icon className="w-full h-full text-primary" />
                   </div>
 
-                  <div className="p-8 relative z-10">
+                  <div className="p-4 md:p-8 relative z-10">
                     {/* Header Section */}
                     <div className="flex items-start space-x-6 mb-8">
                       <div className={`w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-bounce ${
@@ -291,7 +291,7 @@ export default function Home() {
           </div>
 
           {/* Additional Features Grid */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="mt-8 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {[
               { icon: Clock, title: "24/7 Support", desc: "Round-the-clock assistance" },
               { icon: Award, title: "Award Winning", desc: "Industry recognition" },
@@ -305,7 +305,7 @@ export default function Home() {
                   className="crypto-card text-center hover:border-primary/50 transition-smooth hover:scale-105 group"
                   style={{ animationDelay: `${600 + index * 100}ms` }}
                 >
-                  <div className="p-6">
+                  <div className="p-3 md:p-6">
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:crypto-glow transition-smooth">
                       <ItemIcon className="w-6 h-6 text-primary" />
                     </div>
@@ -320,14 +320,14 @@ export default function Home() {
       </section>
 
       {/* Enhanced Trading Pairs Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-6">Popular Trading Pairs</h2>
-            <p className="text-xl text-muted-foreground">Trade the most liquid cryptocurrency pairs</p>
+      <section className="py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4 md:mb-6 px-4">Popular Trading Pairs</h2>
+            <p className="text-base md:text-xl text-muted-foreground px-4">Trade the most liquid cryptocurrency pairs</p>
           </div>
           <Card className="crypto-card overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 group">
-            <div className="p-8 relative">
+            <div className="p-4 md:p-8 relative">
               {/* Background gradient effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               

@@ -187,7 +187,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen crypto-bg overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      <section className="relative py-16 md:py-32 lg:py-48 overflow-hidden">
         {/* Animated background shapes */}
         <div className="absolute inset-0">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -216,7 +216,7 @@ export default function Contact() {
           ))}
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -224,7 +224,7 @@ export default function Contact() {
             className="text-center"
           >
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-foreground mb-8"
+              className="text-3xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 md:mb-8 px-4"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -235,7 +235,7 @@ export default function Contact() {
               </span>
             </motion.h1>
             <motion.p 
-              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+              className="text-base md:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -248,30 +248,30 @@ export default function Contact() {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-24 bg-gradient-to-b from-card/30 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-card/30 to-background">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6 px-4">
               Get in Touch
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Multiple ways to reach our expert support team
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
               return (
                 <InteractiveContactCard key={method.title} delay={index * 0.1}>
                   <Card className="crypto-card text-center hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div className="p-8">
+                    <div className="p-4 md:p-8">
                       {/* Background gradient */}
                       <div className={`absolute inset-0 bg-gradient-to-r ${method.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                       
@@ -309,12 +309,12 @@ export default function Contact() {
           </div>
 
           {/* Support Features */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {supportFeatures.map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <InteractiveContactCard key={feature.title} delay={0.5 + index * 0.1}>
-                  <Card className="crypto-card text-center p-6 hover:border-primary/50 transition-all duration-500 group">
+                  <Card className="crypto-card text-center p-3 md:p-6 hover:border-primary/50 transition-all duration-500 group">
                     <motion.div
                       className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4"
                       whileHover={{ scale: 1.1, rotate: 360 }}
@@ -337,13 +337,13 @@ export default function Contact() {
       </section>
 
       {/* Contact Form & Office Info */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-12 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
             {/* Contact Form */}
             <InteractiveContactCard>
               <Card className="crypto-card">
-                <div className="p-8">
+                <div className="p-4 md:p-8">
                   <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}

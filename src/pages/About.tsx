@@ -159,7 +159,7 @@ export default function About() {
   return (
     <div className="min-h-screen crypto-bg overflow-hidden">
       {/* Hero Section with Parallax */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      <section className="relative py-16 md:py-32 lg:py-48 overflow-hidden">
         {/* Animated background shapes */}
         <div className="absolute inset-0">
           {Array.from({ length: 6 }).map((_, i) => (
@@ -188,7 +188,7 @@ export default function About() {
           ))}
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -196,7 +196,7 @@ export default function About() {
             className="text-center"
           >
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-foreground mb-8"
+              className="text-3xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 md:mb-8 px-4"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -207,7 +207,7 @@ export default function About() {
               </span>
             </motion.h1>
             <motion.p 
-              className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+              className="text-base md:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -238,30 +238,30 @@ export default function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 bg-gradient-to-b from-card/30 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-card/30 to-background">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6 px-4">
               Trusted by Millions
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Our numbers speak for themselves. Join the largest crypto community in the world.
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <InteractiveCard key={stat.label} delay={index * 0.1}>
                   <Card className="crypto-card text-center hover:border-primary/50 transition-all duration-500 group">
-                    <div className="p-8">
+                    <div className="p-4 md:p-8">
                       <motion.div
                         className={`w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center ${
                           stat.color === 'primary' ? 'gradient-primary' :
@@ -291,8 +291,8 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-24">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -300,7 +300,7 @@ export default function About() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-8">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 md:mb-8 px-4">
                 Our Mission
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
@@ -331,7 +331,7 @@ export default function About() {
             </motion.div>
 
             <InteractiveCard>
-              <Card className="crypto-card p-12 text-center">
+              <Card className="crypto-card p-6 md:p-12 text-center">
                 <motion.div
                   whileHover={{ scale: 1.05, rotateY: 5 }}
                   transition={{ duration: 0.3 }}
@@ -353,24 +353,24 @@ export default function About() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-card/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-background to-card/30">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6 px-4">
               What Sets Us Apart
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
               Industry-leading features that make cryptocurrency trading simple, secure, and profitable
             </p>
           </motion.div>
 
-          <div className="space-y-24">
+          <div className="space-y-12 md:space-y-24">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               const isEven = index % 2 === 0;
