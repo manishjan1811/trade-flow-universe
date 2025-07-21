@@ -4,6 +4,7 @@ import { Menu, X, TrendingUp, Wallet, ArrowRightLeft, History, Settings, User } 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: TrendingUp },
@@ -290,8 +291,9 @@ export default function ModernNavbar({ children }: { children: React.ReactNode }
               </div>
             )}
 
-            {/* Auth Buttons / User Menu */}
+            {/* Theme Toggle & Auth Buttons / User Menu */}
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               {isPublicRoute ? (
                 <motion.div
                   className="hidden md:flex items-center space-x-3"
