@@ -558,41 +558,110 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* FAQ CTA */}
+              {/* FAQ Section */}
               <InteractiveContactCard delay={0.5}>
-                <Card className="crypto-card bg-gradient-crypto relative overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20"
-                    animate={{
-                      opacity: [0.3, 0.6, 0.3],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                  <div className="p-8 text-center relative z-10">
+                <Card className="crypto-card relative overflow-hidden">
+                  <div className="p-6 md:p-8">
                     <motion.div
-                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
-                      className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                      viewport={{ once: true }}
+                      className="mb-8"
                     >
-                      <Headphones className="w-8 h-8 text-white" />
+                      <div className="flex items-center mb-4">
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                          className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mr-4"
+                        >
+                          <Headphones className="w-6 h-6 text-white" />
+                        </motion.div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                          Frequently Asked Questions
+                        </h3>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Quick answers to common questions about trading, security, and account management.
+                      </p>
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      Frequently Asked Questions
-                    </h3>
-                    <p className="text-white/80 mb-6 leading-relaxed">
-                      Find quick answers to common questions about trading, security, and account management.
-                    </p>
-                    <Button 
-                      variant="secondary" 
-                      className="bg-white text-background hover:bg-white/90 hover:scale-105 transition-transform duration-300"
-                      size="lg"
+
+                    <div className="space-y-4">
+                      {[
+                        {
+                          question: "How do I start trading on CryptoX P2P?",
+                          answer: "Simply create an account, complete the verification process, and you can start trading immediately. Browse available offers or create your own to begin peer-to-peer trading with verified users."
+                        },
+                        {
+                          question: "Is my money safe during P2P trades?",
+                          answer: "Yes, all funds are held in escrow until both parties complete the trade. This ensures your crypto is protected and only released when payment is confirmed."
+                        },
+                        {
+                          question: "What payment methods are supported?",
+                          answer: "We support over 100+ payment methods including bank transfers, UPI, PayPal, Wise, and many local payment options depending on your region."
+                        },
+                        {
+                          question: "How long does verification take?",
+                          answer: "Basic verification usually takes 5-10 minutes. Enhanced verification for higher limits may take 24-48 hours during business days."
+                        },
+                        {
+                          question: "What are the trading fees?",
+                          answer: "P2P trading on CryptoX is completely free! We don't charge any trading fees. You only pay the market price agreed with your trading partner."
+                        }
+                      ].map((faq, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          viewport={{ once: true }}
+                          className="group"
+                        >
+                          <details className="border border-border rounded-xl hover:border-primary/50 transition-all duration-300 overflow-hidden">
+                            <summary className="p-4 cursor-pointer select-none flex items-center justify-between bg-card/50 hover:bg-card transition-colors duration-300 group-hover:text-primary">
+                              <span className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                                {faq.question}
+                              </span>
+                              <motion.span
+                                className="text-primary ml-4 text-xl font-bold"
+                                whileHover={{ scale: 1.2 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                +
+                              </motion.span>
+                            </summary>
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ duration: 0.3 }}
+                              className="p-4 pt-0 bg-card/30"
+                            >
+                              <p className="text-muted-foreground leading-relaxed">
+                                {faq.answer}
+                              </p>
+                            </motion.div>
+                          </details>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      viewport={{ once: true }}
+                      className="mt-8 text-center p-6 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl border border-primary/20"
                     >
-                      View FAQ
-                    </Button>
+                      <h4 className="text-lg font-semibold text-foreground mb-2">
+                        Still have questions?
+                      </h4>
+                      <p className="text-muted-foreground mb-4">
+                        Our support team is available 24/7 to help you
+                      </p>
+                      <Button className="btn-crypto hover:scale-105 transition-transform duration-300">
+                        Contact Support
+                      </Button>
+                    </motion.div>
                   </div>
                 </Card>
               </InteractiveContactCard>
