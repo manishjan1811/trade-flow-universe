@@ -121,17 +121,20 @@ export default function Home() {
       {/* New Geometric Animated Hero Section */}
       <CryptoHeroGeometric />
 
-      {/* Action Buttons Section */}
-      <section className="py-16 bg-background relative -mt-32 z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Action Buttons Section - Integrated with Hero */}
+      <section className="py-16 crypto-bg relative -mt-32 z-20">
+        {/* Background gradient overlay to match hero */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02]" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <Link to="/register">
-              <Button size="lg" className="btn-crypto text-xl px-12 py-8 crypto-glow hover:scale-110 transition-bounce group">
+              <Button size="lg" className="btn-crypto text-xl px-12 py-8 crypto-glow hover:scale-110 transition-bounce group backdrop-blur-sm">
                 <span className="group-hover:animate-pulse">Start Trading Now</span>
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="text-xl px-12 py-8 hover:scale-105 transition-bounce border-primary/30 hover:border-primary group">
+            <Button size="lg" variant="outline" className="text-xl px-12 py-8 hover:scale-105 transition-bounce border-primary/30 hover:border-primary group backdrop-blur-sm bg-card/20">
               <Play className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
               Watch Demo
             </Button>
