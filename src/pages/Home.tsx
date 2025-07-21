@@ -19,25 +19,37 @@ const advancedFeatures = [
     icon: BarChart3,
     title: "Advanced Analytics",
     description: "Professional trading tools with real-time charts, technical indicators, and market analysis.",
-    items: ["TradingView Charts", "50+ Indicators", "Price Alerts", "Portfolio Analytics"]
+    items: ["TradingView Charts", "50+ Indicators", "Price Alerts", "Portfolio Analytics"],
+    stats: { users: "2M+", accuracy: "94%", tools: "50+" },
+    badge: "Most Popular",
+    color: "primary"
   },
   {
     icon: Smartphone,
     title: "Mobile Trading",
     description: "Trade on-the-go with our award-winning mobile app available on iOS and Android.",
-    items: ["iOS & Android Apps", "Biometric Security", "Push Notifications", "Offline Mode"]
+    items: ["iOS & Android Apps", "Biometric Security", "Push Notifications", "Offline Mode"],
+    stats: { downloads: "5M+", rating: "4.9", countries: "180+" },
+    badge: "Editor's Choice",
+    color: "accent"
   },
   {
     icon: Lock,
-    title: "Institutional Grade Security",
+    title: "Institutional Security",
     description: "Bank-level security with multi-signature wallets and cold storage protection.",
-    items: ["Multi-Sig Wallets", "Cold Storage", "Insurance Coverage", "SOC 2 Compliance"]
+    items: ["Multi-Sig Wallets", "Cold Storage", "Insurance Coverage", "SOC 2 Compliance"],
+    stats: { secured: "$50B+", uptime: "99.9%", audits: "12+" },
+    badge: "Enterprise Grade",
+    color: "destructive"
   },
   {
     icon: Globe,
     title: "Global Liquidity",
     description: "Access deep liquidity across 200+ trading pairs with minimal slippage.",
-    items: ["200+ Trading Pairs", "24/7 Trading", "Instant Settlement", "Cross-Chain Support"]
+    items: ["200+ Trading Pairs", "24/7 Trading", "Instant Settlement", "Cross-Chain Support"],
+    stats: { volume: "$2B+", pairs: "200+", speed: "<1ms" },
+    badge: "High Volume",
+    color: "primary"
   }
 ];
 
@@ -265,44 +277,141 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Advanced Features Section */}
-      <section className="py-24 bg-card/20">
+      {/* Enhanced Professional Features Section */}
+      <section className="py-24 bg-card/20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Professional Trading Tools
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Access institutional-grade features designed for serious traders
+              Access institutional-grade features designed for serious traders and professional investors
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {advancedFeatures.map((feature, index) => {
               const Icon = feature.icon;
+              const stats = Object.entries(feature.stats);
+              
               return (
                 <Card 
                   key={feature.title} 
-                  className="crypto-card hover:border-primary/50 transition-smooth hover:scale-102 group"
+                  className="crypto-card hover:border-primary/50 transition-smooth hover:scale-102 group relative overflow-hidden"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="p-8">
-                    <div className="flex items-start space-x-6">
-                      <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-bounce">
+                  {/* Badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      feature.color === 'primary' ? 'bg-primary/10 text-primary' :
+                      feature.color === 'accent' ? 'bg-accent/10 text-accent' :
+                      'bg-destructive/10 text-destructive'
+                    }`}>
+                      {feature.badge}
+                    </div>
+                  </div>
+
+                  {/* Background Pattern */}
+                  <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                    <Icon className="w-full h-full text-primary" />
+                  </div>
+
+                  <div className="p-8 relative z-10">
+                    {/* Header Section */}
+                    <div className="flex items-start space-x-6 mb-8">
+                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-bounce ${
+                        feature.color === 'primary' ? 'gradient-primary' :
+                        feature.color === 'accent' ? 'bg-gradient-to-br from-accent to-accent/80' :
+                        'bg-gradient-to-br from-destructive to-destructive/80'
+                      }`}>
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-foreground mb-4">{feature.title}</h3>
-                        <p className="text-muted-foreground mb-6 text-lg leading-relaxed">{feature.description}</p>
-                        <div className="grid grid-cols-2 gap-3">
-                          {feature.items.map((item) => (
-                            <div key={item} className="flex items-center space-x-2">
-                              <CheckCircle className="w-4 h-4 text-accent" />
-                              <span className="text-sm text-muted-foreground">{item}</span>
-                            </div>
-                          ))}
-                        </div>
+                        <h3 className="text-2xl font-bold text-foreground mb-3">{feature.title}</h3>
+                        <p className="text-muted-foreground text-lg leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
+
+                    {/* Stats Section */}
+                    <div className="grid grid-cols-3 gap-4 mb-8">
+                      {stats.map(([label, value]) => (
+                        <div key={label} className="text-center p-4 bg-muted/20 rounded-lg hover:bg-muted/30 transition-smooth">
+                          <div className={`text-2xl font-bold mb-1 ${
+                            feature.color === 'primary' ? 'text-primary' :
+                            feature.color === 'accent' ? 'text-accent' :
+                            'text-destructive'
+                          }`}>
+                            {value}
+                          </div>
+                          <div className="text-xs text-muted-foreground capitalize">{label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Features List */}
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      {feature.items.map((item, itemIndex) => (
+                        <div 
+                          key={item} 
+                          className="flex items-center space-x-3 p-3 bg-background/50 rounded-lg hover:bg-background/70 transition-smooth"
+                          style={{ animationDelay: `${index * 150 + itemIndex * 50}ms` }}
+                        >
+                          <CheckCircle className={`w-4 h-4 ${
+                            feature.color === 'primary' ? 'text-primary' :
+                            feature.color === 'accent' ? 'text-accent' :
+                            'text-destructive'
+                          }`} />
+                          <span className="text-sm font-medium text-foreground">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="flex space-x-3">
+                      <Button 
+                        className={`flex-1 transition-smooth hover:scale-105 ${
+                          feature.color === 'primary' ? 'btn-crypto' :
+                          feature.color === 'accent' ? 'btn-success' :
+                          'bg-destructive text-destructive-foreground hover:bg-destructive/90'
+                        }`}
+                      >
+                        Learn More
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                      <Button variant="outline" size="icon" className="hover:scale-110 transition-bounce">
+                        <Play className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Hover Effect Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-smooth pointer-events-none" />
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* Additional Features Grid */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { icon: Clock, title: "24/7 Support", desc: "Round-the-clock assistance" },
+              { icon: Award, title: "Award Winning", desc: "Industry recognition" },
+              { icon: Users, title: "10M+ Users", desc: "Trusted globally" },
+              { icon: Shield, title: "Insured Funds", desc: "$250M coverage" }
+            ].map((item, index) => {
+              const ItemIcon = item.icon;
+              return (
+                <Card 
+                  key={item.title}
+                  className="crypto-card text-center hover:border-primary/50 transition-smooth hover:scale-105 group"
+                  style={{ animationDelay: `${600 + index * 100}ms` }}
+                >
+                  <div className="p-6">
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:crypto-glow transition-smooth">
+                      <ItemIcon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h4 className="font-semibold text-foreground mb-2">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
                   </div>
                 </Card>
               );
