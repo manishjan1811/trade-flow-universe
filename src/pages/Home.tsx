@@ -141,12 +141,12 @@ export default function Home() {
               
               {/* Mobile Action Buttons - Professional Design */}
               <motion.div 
-                className="space-y-4 mb-10 px-4"
+                className="flex gap-3 mb-10 px-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <Link to="/exchange">
+                <Link to="/exchange" className="flex-1">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -155,7 +155,7 @@ export default function Home() {
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                     <Button variant="premium" size="xl" className="relative w-full">
                       <span className="mr-2">🚀</span>
-                      Start Trading Now
+                      Start Trading
                       <motion.div
                         className="ml-2"
                         animate={{ x: [0, 4, 0] }}
@@ -167,41 +167,41 @@ export default function Home() {
                   </motion.div>
                 </Link>
                 
-                <Link to="/register">
+                <Link to="/register" className="flex-1">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <Button variant="professional" size="lg" className="w-full">
                       <span className="mr-2">⚡</span>
-                      Create Free Account
+                      Create Account
                     </Button>
                   </motion.div>
                 </Link>
+              </motion.div>
 
-                <motion.div 
-                  className="flex items-center justify-center gap-6 pt-4 text-xs text-muted-foreground"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <div className="flex items-center">
-                    <Shield className="w-4 h-4 mr-1 text-accent" />
-                    <span>Secure</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Zap className="w-4 h-4 mr-1 text-accent" />
-                    <span>Instant</span>
-                  </div>
-                  <div className="flex items-center">
-                    <DollarSign className="w-4 h-4 mr-1 text-accent" />
-                    <span>Zero Fees</span>
-                  </div>
-                </motion.div>
+              <motion.div 
+                className="flex items-center justify-center gap-6 pt-4 text-xs text-muted-foreground"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+              >
+                <div className="flex items-center">
+                  <Shield className="w-4 h-4 mr-1 text-accent" />
+                  <span>Secure</span>
+                </div>
+                <div className="flex items-center">
+                  <Zap className="w-4 h-4 mr-1 text-accent" />
+                  <span>Instant</span>
+                </div>
+                <div className="flex items-center">
+                  <DollarSign className="w-4 h-4 mr-1 text-accent" />
+                  <span>Zero Fees</span>
+                </div>
               </motion.div>
 
               {/* Mobile Quick Stats Grid - Enhanced */}
-              <StaggeredCards className="grid grid-cols-2 gap-4 mb-10">
+              <StaggeredCards className="grid grid-cols-2 gap-4 mb-10 mt-8">
                 {quickStats.map((stat, index) => (
                   <motion.div 
                     key={stat.label} 
