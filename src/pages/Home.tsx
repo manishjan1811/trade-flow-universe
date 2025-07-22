@@ -102,7 +102,7 @@ export default function Home() {
               className="text-center mb-4"
             >
               <motion.h1 
-                className="text-2xl font-bold text-foreground mb-3 leading-tight"
+                className="text-3xl font-bold text-foreground mb-3 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
