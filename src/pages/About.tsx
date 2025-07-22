@@ -592,12 +592,10 @@ export default function About() {
       </section>
 
       {/* Professional CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary via-primary/90 to-accent relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/95 via-primary to-accent/95 relative overflow-hidden">
         {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         </div>
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -663,7 +661,7 @@ export default function About() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="!text-white !border-white/60 hover:!bg-white hover:!text-primary font-semibold px-8 py-3 text-base hover:scale-105 transition-all duration-300"
+                  className="text-white border-white/80 bg-transparent hover:bg-white hover:text-primary font-semibold px-8 py-3 text-base hover:scale-105 transition-all duration-300 hover:border-white"
                 >
                   <TrendingUp className="mr-2 w-5 h-5" />
                   Start Trading
