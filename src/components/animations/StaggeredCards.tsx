@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface StaggeredCardsProps {
@@ -8,7 +8,7 @@ interface StaggeredCardsProps {
 }
 
 export function StaggeredCards({ children, className = '', staggerDelay = 0.1 }: StaggeredCardsProps) {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -18,7 +18,7 @@ export function StaggeredCards({ children, className = '', staggerDelay = 0.1 }:
     },
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { 
       opacity: 0,
       y: 20,
@@ -30,7 +30,6 @@ export function StaggeredCards({ children, className = '', staggerDelay = 0.1 }:
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: [0.4, 0, 0.2, 1],
       },
     },
   };
