@@ -271,7 +271,7 @@ export default function Contact() {
               return (
                 <InteractiveContactCard key={method.title} delay={index * 0.1}>
                   <Card className="crypto-card text-center hover:border-primary/50 transition-all duration-500 group relative overflow-hidden">
-                    <div className="p-4 md:p-8">
+                     <div className="p-3 md:p-6">
                       {/* Background gradient */}
                       <div className={`absolute inset-0 bg-gradient-to-r ${method.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                       
