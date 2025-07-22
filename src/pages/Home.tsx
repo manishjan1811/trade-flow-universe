@@ -91,19 +91,6 @@ export default function Home() {
         {/* Geometric Background Shapes */}
         <GeometricBackground />
         
-        {/* Floating geometric shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <FloatingElement delay={0} duration={4} intensity={20} className="absolute top-20 left-10">
-            <div className="w-16 h-16 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-sm" />
-          </FloatingElement>
-          <FloatingElement delay={1} duration={5} intensity={15} className="absolute top-40 right-20">
-            <div className="w-12 h-12 bg-gradient-to-r from-accent/20 to-primary/20 rounded-lg blur-sm rotate-45" />
-          </FloatingElement>
-          <FloatingElement delay={2} duration={3.5} intensity={25} className="absolute bottom-32 left-1/4">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary/30 to-accent/30 rounded-full blur-sm" />
-          </FloatingElement>
-        </div>
-        
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Hero Content */}
