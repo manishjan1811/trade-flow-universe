@@ -644,7 +644,7 @@ export default function About() {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
+              <Button size="lg" variant="outline" className="text-white dark:text-white border-white hover:bg-white hover:text-primary text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
                 Contact Us
                 <ChevronRight className="ml-3 w-6 h-6" />
               </Button>
