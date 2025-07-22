@@ -87,21 +87,176 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section with 3D Background and Quick Trade */}
-      <section className="relative py-4 sm:py-6 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
+      <section className="relative py-8 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
         {/* Geometric Background Shapes */}
         <GeometricBackground />
         
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+          {/* Mobile Layout */}
+          <div className="lg:hidden">
+            {/* Mobile Hero Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="text-center mb-8"
+            >
+              <motion.h1 
+                className="text-3xl font-bold text-foreground mb-4 leading-tight"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Trade Crypto 
+                <motion.span 
+                  className="gradient-primary bg-clip-text text-transparent block mt-1"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  Peer-to-Peer
+                </motion.span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-muted-foreground mb-6 leading-relaxed px-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Connect directly with traders worldwide. Zero fees, instant settlements.
+              </motion.p>
+              
+              {/* Mobile Action Buttons */}
+              <motion.div 
+                className="space-y-3 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <Link to="/exchange">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button size="lg" className="btn-crypto w-full h-14 text-lg font-semibold">
+                      Start Trading Now
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </motion.div>
+                </Link>
+                <Link to="/register">
+                  <Button size="lg" variant="outline" className="w-full h-12 text-base">
+                    Create Free Account
+                  </Button>
+                </Link>
+              </motion.div>
+
+              {/* Mobile Quick Stats Grid */}
+              <StaggeredCards className="grid grid-cols-2 gap-3 mb-8">
+                {quickStats.map((stat, index) => (
+                  <motion.div 
+                    key={stat.label} 
+                    className="bg-card/70 backdrop-blur-sm rounded-xl p-4 border border-primary/10 text-center"
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+                  >
+                    <div className="text-lg font-bold text-foreground">{stat.value}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                    <div className={`text-xs mt-1 flex items-center justify-center ${stat.positive ? 'text-green-500' : 'text-red-500'}`}>
+                      {stat.positive ? <ArrowUpRight className="w-3 h-3 mr-1" /> : <ArrowDownRight className="w-3 h-3 mr-1" />}
+                      {stat.change}
+                    </div>
+                  </motion.div>
+                ))}
+              </StaggeredCards>
+            </motion.div>
+
+            {/* Mobile Quick Trade Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Card className="crypto-card backdrop-blur-sm bg-card/95 border-primary/20 shadow-2xl">
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-xl font-bold text-foreground">Quick Trade</h3>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-3">
+                      <Button 
+                        variant={orderType === "buy" ? "default" : "outline"}
+                        onClick={() => setOrderType("buy")}
+                        className="w-full h-12 text-base font-medium"
+                      >
+                        Buy
+                      </Button>
+                      <Button 
+                        variant={orderType === "sell" ? "default" : "outline"}
+                        onClick={() => setOrderType("sell")}
+                        className="w-full h-12 text-base font-medium"
+                      >
+                        Sell
+                      </Button>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">Choose Asset</label>
+                      <Select value={selectedAsset} onValueChange={setSelectedAsset}>
+                        <SelectTrigger className="h-12 text-base">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="BTC">Bitcoin (BTC)</SelectItem>
+                          <SelectItem value="ETH">Ethereum (ETH)</SelectItem>
+                          <SelectItem value="USDT">Tether (USDT)</SelectItem>
+                          <SelectItem value="BNB">BNB (BNB)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">Enter Amount</label>
+                      <Input
+                        placeholder="0.00"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        type="number"
+                        className="h-12 text-base text-center font-medium"
+                      />
+                    </div>
+
+                    <Link to="/exchange" className="block">
+                      <Button className="btn-crypto w-full h-14 text-lg font-semibold">
+                        Find {orderType === "buy" ? "Sellers" : "Buyers"}
+                        <Search className="ml-2 w-5 h-5" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          </div>
+
+          {/* Desktop Layout - unchanged */}
+          <div className="hidden lg:grid grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="text-center lg:text-left"
+              className="text-left"
             >
               <motion.h1 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-2 sm:mb-3 md:mb-4 lg:mb-6 leading-tight"
+                className="text-5xl xl:text-6xl font-bold text-foreground mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -118,7 +273,7 @@ export default function Home() {
               </motion.h1>
               
               <motion.p 
-                className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed max-w-md mx-auto lg:mx-0"
+                className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -127,18 +282,18 @@ export default function Home() {
               </motion.p>
               
               <motion.div 
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center lg:justify-start"
+                className="flex gap-4 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <Link to="/exchange" className="order-1">
+                <Link to="/exchange">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    <Button size="lg" className="btn-crypto w-full sm:w-auto group h-12 px-8">
+                    <Button size="lg" className="btn-crypto group h-12 px-8">
                       Start Trading
                       <motion.div
                         className="ml-2"
@@ -150,28 +305,28 @@ export default function Home() {
                     </Button>
                   </motion.div>
                 </Link>
-                <Link to="/register" className="order-2">
+                <Link to="/register">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8">
+                    <Button size="lg" variant="outline" className="h-12 px-8">
                       Create Account
                     </Button>
                   </motion.div>
                 </Link>
               </motion.div>
 
-              {/* Quick Stats - Mobile Optimized */}
+              {/* Desktop Quick Stats */}
               <StaggeredCards 
-                className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:grid-cols-4"
+                className="grid grid-cols-4 gap-4"
                 staggerDelay={0.1}
               >
                 {quickStats.map((stat, index) => (
                   <motion.div 
                     key={stat.label} 
-                    className="text-center p-2 sm:p-3 bg-card/60 rounded-lg border border-primary/10 backdrop-blur-sm hover:bg-card/80 transition-all duration-300"
+                    className="text-center p-3 bg-card/60 rounded-lg border border-primary/10 backdrop-blur-sm hover:bg-card/80 transition-all duration-300"
                     whileHover={{ 
                       scale: 1.02,
                       boxShadow: "0 6px 20px rgba(0, 212, 255, 0.1)"
@@ -181,7 +336,7 @@ export default function Home() {
                     transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   >
                     <PulsingElement duration={2 + index * 0.5}>
-                      <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground leading-tight">{stat.value}</div>
+                      <div className="text-xl font-bold text-foreground leading-tight">{stat.value}</div>
                     </PulsingElement>
                     <div className="text-xs text-muted-foreground leading-tight mt-1">{stat.label}</div>
                     <motion.div 
@@ -204,47 +359,44 @@ export default function Home() {
               </StaggeredCards>
             </motion.div>
 
-            {/* Quick Trade Panel */}
+            {/* Desktop Quick Trade Panel */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Card className="crypto-card backdrop-blur-sm bg-card/90 border-primary/20 shadow-xl lg:shadow-2xl">
-                <div className="p-3 sm:p-4 md:p-6">
-                  <div className="flex items-center justify-between mb-4 sm:mb-6">
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Quick Trade</h3>
-                    <div className="flex items-center text-xs sm:text-sm text-muted-foreground">
-                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
-                      <span className="hidden sm:inline">{currentTime.toLocaleTimeString()}</span>
-                      <span className="sm:hidden">{currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
+              <Card className="crypto-card backdrop-blur-sm bg-card/90 border-primary/20 shadow-2xl">
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-xl font-bold text-foreground">Quick Trade</h3>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {currentTime.toLocaleTimeString()}
                     </div>
                   </div>
 
-                  <div className="space-y-3 sm:space-y-4">
-                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-3">
                       <Button 
                         variant={orderType === "buy" ? "default" : "outline"}
                         onClick={() => setOrderType("buy")}
-                        className="w-full text-sm sm:text-base"
-                        size="sm"
+                        className="w-full"
                       >
                         Buy
                       </Button>
                       <Button 
                         variant={orderType === "sell" ? "default" : "outline"}
                         onClick={() => setOrderType("sell")}
-                        className="w-full text-sm sm:text-base"
-                        size="sm"
+                        className="w-full"
                       >
                         Sell
                       </Button>
                     </div>
 
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Asset</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Asset</label>
                       <Select value={selectedAsset} onValueChange={setSelectedAsset}>
-                        <SelectTrigger className="h-9 sm:h-10 text-sm">
+                        <SelectTrigger className="h-10">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -257,20 +409,20 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Amount</label>
+                      <label className="block text-sm font-medium text-foreground mb-2">Amount</label>
                       <Input
                         placeholder="Enter amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         type="number"
-                        className="h-9 sm:h-10 text-sm"
+                        className="h-10"
                       />
                     </div>
 
                     <Link to="/exchange" className="block">
-                      <Button className="btn-crypto w-full h-9 sm:h-10 text-sm sm:text-base">
+                      <Button className="btn-crypto w-full h-10">
                         Find {orderType === "buy" ? "Sellers" : "Buyers"}
-                        <Search className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                        <Search className="ml-2 w-4 h-4" />
                       </Button>
                     </Link>
                   </div>
