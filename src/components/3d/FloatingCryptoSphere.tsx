@@ -1,7 +1,7 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial, Float, Text3D } from '@react-three/drei';
-import { Mesh, Vector3 } from 'three';
+import { Float } from '@react-three/drei';
+import { Mesh } from 'three';
 
 export function FloatingCryptoSphere({ position, scale = 1, color = "#00d4ff" }: {
   position: [number, number, number];
@@ -27,18 +27,16 @@ export function FloatingCryptoSphere({ position, scale = 1, color = "#00d4ff" }:
   return (
     <group ref={groupRef} position={position} scale={scale}>
       <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-        <Sphere ref={meshRef} args={sphereGeometry as any}>
-          <MeshDistortMaterial
+        <mesh ref={meshRef}>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial
             color={color}
-            attach="material"
-            distort={0.4}
-            speed={2}
             roughness={0.1}
             metalness={0.8}
             transparent
             opacity={0.8}
           />
-        </Sphere>
+        </mesh>
         
         {/* Glowing ring around sphere */}
         <mesh>

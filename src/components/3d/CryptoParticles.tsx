@@ -1,6 +1,5 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 export function CryptoParticles({ count = 2000 }: { count?: number }) {
@@ -24,8 +23,16 @@ export function CryptoParticles({ count = 2000 }: { count?: number }) {
   });
 
   return (
-    <Points ref={points} positions={particlesPosition} stride={3} frustumCulled={false}>
-      <PointMaterial
+    <points ref={points} frustumCulled={false}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={particlesPosition.length / 3}
+          array={particlesPosition}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
         transparent
         color="#00d4ff"
         size={0.05}
@@ -33,6 +40,6 @@ export function CryptoParticles({ count = 2000 }: { count?: number }) {
         depthWrite={false}
         opacity={0.6}
       />
-    </Points>
+    </points>
   );
 }
