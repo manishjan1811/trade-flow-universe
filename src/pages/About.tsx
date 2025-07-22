@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ShieldCheck, Users2, Earth, TrendingUp, Trophy, Zap, Crosshair, Rocket, StarIcon, ChevronRight, ArrowRight, PlayCircle, Lock, Clock, MapPin, Building2, Phone, Mail, UserCheck, Sparkles, CheckCircle, Crown, Database, Wifi } from "lucide-react";
+import { ShieldCheck, Users2, Earth, TrendingUp, Trophy, Zap, Crosshair, Rocket, StarIcon, ChevronRight, ArrowRight, PlayCircle, Lock, Clock, MapPin, Building2, Phone, Mail, UserCheck, Sparkles, CheckCircle, Crown, Database, Wifi, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -591,65 +591,111 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary to-accent relative overflow-hidden">
-        <motion.div
-          className="absolute inset-0 bg-black/20 dark:bg-black/40"
-          animate={{
-            background: [
-              "linear-gradient(45deg, hsl(var(--primary)/0.2), hsl(var(--accent)/0.2))",
-              "linear-gradient(135deg, hsl(var(--accent)/0.2), hsl(var(--primary)/0.2))",
-              "linear-gradient(225deg, hsl(var(--primary)/0.2), hsl(var(--accent)/0.2))",
-            ],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+      {/* Professional CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-r from-primary via-primary/90 to-accent relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <motion.h2
-            className="text-4xl md:text-6xl font-bold text-white mb-8"
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Ready to Join the Revolution?
-          </motion.h2>
-          <motion.p
-            className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Join millions of traders who trust CryptoX for their cryptocurrency trading needs. 
-            Start your journey today and experience the future of finance.
-          </motion.p>
-          
-          <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Link to="/register">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
-                Start Trading Now
-                <ArrowRight className="ml-3 w-6 h-6" />
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button size="lg" variant="outline" className="!text-white border-white hover:bg-white hover:!text-primary text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
-                Contact Us
-                <ChevronRight className="ml-3 w-6 h-6" />
-              </Button>
-            </Link>
-          </motion.div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            {/* Main Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                Start Your Crypto Journey
+              </h2>
+              <div className="w-24 h-1 bg-white/60 mx-auto mb-6"></div>
+              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                Join over 10 million traders worldwide who trust CryptoX for secure, 
+                fast, and reliable cryptocurrency trading.
+              </p>
+            </motion.div>
+
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
+            >
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white mb-2">$50B+</div>
+                <div className="text-white/80 text-sm">Daily Volume</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white mb-2">180+</div>
+                <div className="text-white/80 text-sm">Countries</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white mb-2">99.9%</div>
+                <div className="text-white/80 text-sm">Uptime</div>
+              </div>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
+              <Link to="/register">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-3 text-base hover:scale-105 transition-all duration-300 shadow-lg"
+                >
+                  <Users2 className="mr-2 w-5 h-5" />
+                  Create Free Account
+                </Button>
+              </Link>
+              <Link to="/exchange">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="!text-white !border-white/60 hover:!bg-white hover:!text-primary font-semibold px-8 py-3 text-base hover:scale-105 transition-all duration-300"
+                >
+                  <TrendingUp className="mr-2 w-5 h-5" />
+                  Start Trading
+                </Button>
+              </Link>
+            </motion.div>
+
+            {/* Trust Indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="mt-12 pt-8 border-t border-white/20"
+            >
+              <p className="text-white/70 text-sm mb-4">Trusted by leading institutions</p>
+              <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                <div className="flex items-center space-x-2">
+                  <Shield className="w-5 h-5 text-white" />
+                  <span className="text-white text-sm">Bank-Grade Security</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Lock className="w-5 h-5 text-white" />
+                  <span className="text-white text-sm">Licensed & Regulated</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-white" />
+                  <span className="text-white text-sm">SOC 2 Certified</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>
