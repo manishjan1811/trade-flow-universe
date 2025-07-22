@@ -276,28 +276,28 @@ export default function Contact() {
                       <div className={`absolute inset-0 bg-gradient-to-r ${method.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                       
                       <motion.div
-                        className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-r ${method.color}`}
+                        className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 bg-gradient-to-r ${method.color}`}
                         whileHover={{ 
                           scale: 1.1,
                           rotateY: 360,
                         }}
                         transition={{ duration: 0.6 }}
                       >
-                        <Icon className="w-10 h-10 text-white" />
+                        <Icon className="w-8 h-8 text-white" />
                       </motion.div>
                       
-                      <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                         {method.title}
                       </h3>
-                      <p className="text-muted-foreground mb-4 text-lg leading-relaxed">
+                      <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
                         {method.description}
                       </p>
-                      <p className="font-medium text-foreground mb-2 text-lg">{method.value}</p>
-                      <p className="text-sm text-accent mb-6">Response time: {method.response}</p>
+                      <p className="font-medium text-foreground mb-2 text-sm">{method.value}</p>
+                      <p className="text-xs text-accent mb-4">Response time: {method.response}</p>
                       
                       <Button 
                         className={`w-full hover:scale-105 transition-transform duration-300 bg-gradient-to-r ${method.color} text-white border-0`}
-                        size="lg"
+                        size="sm"
                       >
                         {method.action}
                       </Button>
