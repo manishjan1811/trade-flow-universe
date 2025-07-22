@@ -87,20 +87,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section with 3D Background and Quick Trade */}
-      <section className="relative py-6 sm:py-8 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
+      <section className="relative py-4 sm:py-6 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
         {/* Geometric Background Shapes */}
         <GeometricBackground />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center">
             {/* Hero Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="text-center lg:text-left"
             >
               <motion.h1 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-3 sm:mb-4 md:mb-6 leading-tight"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-2 sm:mb-3 md:mb-4 lg:mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -115,8 +116,9 @@ export default function Home() {
                   Peer-to-Peer
                 </motion.span>
               </motion.h1>
+              
               <motion.p 
-                className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-6 md:mb-8 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed max-w-md mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -125,18 +127,18 @@ export default function Home() {
               </motion.p>
               
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 mb-8"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <Link to="/exchange">
+                <Link to="/exchange" className="order-1">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    <Button size="lg" className="btn-crypto w-full sm:w-auto group">
+                    <Button size="lg" className="btn-crypto w-full sm:w-auto group h-12 px-8">
                       Start Trading
                       <motion.div
                         className="ml-2"
@@ -148,40 +150,40 @@ export default function Home() {
                     </Button>
                   </motion.div>
                 </Link>
-                <Link to="/register">
+                <Link to="/register" className="order-2">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8">
                       Create Account
                     </Button>
                   </motion.div>
                 </Link>
               </motion.div>
 
-              {/* Quick Stats */}
+              {/* Quick Stats - Mobile Optimized */}
               <StaggeredCards 
-                className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4"
+                className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:grid-cols-4"
                 staggerDelay={0.1}
               >
                 {quickStats.map((stat, index) => (
                   <motion.div 
                     key={stat.label} 
-                    className="text-center p-2 sm:p-3 bg-card/60 rounded-lg border backdrop-blur-sm hover:bg-card/80 transition-all duration-300"
+                    className="text-center p-2 sm:p-3 bg-card/60 rounded-lg border border-primary/10 backdrop-blur-sm hover:bg-card/80 transition-all duration-300"
                     whileHover={{ 
-                      scale: 1.03,
-                      boxShadow: "0 8px 25px rgba(0, 212, 255, 0.1)"
+                      scale: 1.02,
+                      boxShadow: "0 6px 20px rgba(0, 212, 255, 0.1)"
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   >
                     <PulsingElement duration={2 + index * 0.5}>
-                      <div className="text-base sm:text-lg md:text-xl font-bold text-foreground">{stat.value}</div>
+                      <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-foreground leading-tight">{stat.value}</div>
                     </PulsingElement>
-                    <div className="text-xs sm:text-xs text-muted-foreground leading-tight">{stat.label}</div>
+                    <div className="text-xs text-muted-foreground leading-tight mt-1">{stat.label}</div>
                     <motion.div 
                       className={`text-xs flex items-center justify-center mt-1 ${stat.positive ? 'text-green-500' : 'text-red-500'}`}
                       animate={{ 
