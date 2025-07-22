@@ -70,51 +70,53 @@ function ElegantShape({
 export function GeometricBackground() {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 blur-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-accent/3 blur-2xl" />
             
+            {/* Mobile: Smaller, fewer shapes */}
             <ElegantShape
                 delay={0.3}
-                width={600}
-                height={140}
-                rotate={12}
-                gradient="from-primary/15"
-                className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+                width={320}
+                height={80}
+                rotate={8}
+                gradient="from-primary/12"
+                className="left-[-15%] sm:left-[-10%] md:left-[-5%] top-[10%] sm:top-[15%] md:top-[20%] md:w-[600px] md:h-[140px]"
             />
 
             <ElegantShape
                 delay={0.5}
-                width={500}
-                height={120}
-                rotate={-15}
-                gradient="from-accent/15"
-                className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+                width={280}
+                height={70}
+                rotate={-12}
+                gradient="from-accent/12"
+                className="right-[-10%] sm:right-[-5%] md:right-[0%] top-[65%] sm:top-[70%] md:top-[75%] md:w-[500px] md:h-[120px]"
             />
 
+            {/* Only show on larger screens */}
             <ElegantShape
                 delay={0.4}
-                width={300}
-                height={80}
-                rotate={-8}
-                gradient="from-violet-500/15"
-                className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+                width={200}
+                height={50}
+                rotate={-6}
+                gradient="from-violet-500/10"
+                className="hidden sm:block left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%] md:w-[300px] md:h-[80px]"
             />
 
             <ElegantShape
                 delay={0.6}
-                width={200}
-                height={60}
-                rotate={20}
-                gradient="from-amber-500/15"
-                className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
+                width={120}
+                height={35}
+                rotate={15}
+                gradient="from-amber-500/10"
+                className="hidden md:block right-[15%] md:right-[20%] top-[10%] md:top-[15%] md:w-[200px] md:h-[60px]"
             />
 
             <ElegantShape
                 delay={0.7}
-                width={150}
-                height={40}
-                rotate={-25}
-                gradient="from-cyan-500/15"
-                className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
+                width={100}
+                height={25}
+                rotate={-20}
+                gradient="from-cyan-500/8"
+                className="hidden lg:block left-[20%] md:left-[25%] top-[5%] md:top-[10%] md:w-[150px] md:h-[40px]"
             />
         </div>
     );

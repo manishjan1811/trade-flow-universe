@@ -87,12 +87,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section with 3D Background and Quick Trade */}
-      <section className="relative py-8 md:py-16 bg-gradient-to-br from-background via-card/30 to-background min-h-screen flex items-center">
+      <section className="relative py-6 sm:py-8 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
         {/* Geometric Background Shapes */}
         <GeometricBackground />
         
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center">
             {/* Hero Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -100,7 +100,7 @@ export default function Home() {
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
               <motion.h1 
-                className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 md:mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-3 sm:mb-4 md:mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -116,12 +116,12 @@ export default function Home() {
                 </motion.span>
               </motion.h1>
               <motion.p 
-                className="text-base md:text-xl text-muted-foreground mb-6 md:mb-8 leading-relaxed"
+                className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-6 md:mb-8 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Connect directly with traders worldwide. Zero fees, instant settlements, and bank-level security for all your crypto needs.
+                Connect directly with traders worldwide. Zero fees, instant settlements, and bank-level security.
               </motion.p>
               
               <motion.div 
@@ -163,29 +163,29 @@ export default function Home() {
 
               {/* Quick Stats */}
               <StaggeredCards 
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4"
                 staggerDelay={0.1}
               >
                 {quickStats.map((stat, index) => (
                   <motion.div 
                     key={stat.label} 
-                    className="text-center p-3 bg-card/50 rounded-lg border backdrop-blur-sm hover:bg-card/70 transition-all duration-300"
+                    className="text-center p-2 sm:p-3 bg-card/60 rounded-lg border backdrop-blur-sm hover:bg-card/80 transition-all duration-300"
                     whileHover={{ 
-                      scale: 1.05,
-                      boxShadow: "0 10px 30px rgba(0, 212, 255, 0.1)"
+                      scale: 1.03,
+                      boxShadow: "0 8px 25px rgba(0, 212, 255, 0.1)"
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   >
                     <PulsingElement duration={2 + index * 0.5}>
-                      <div className="text-lg md:text-xl font-bold text-foreground">{stat.value}</div>
+                      <div className="text-base sm:text-lg md:text-xl font-bold text-foreground">{stat.value}</div>
                     </PulsingElement>
-                    <div className="text-xs text-muted-foreground">{stat.label}</div>
+                    <div className="text-xs sm:text-xs text-muted-foreground leading-tight">{stat.label}</div>
                     <motion.div 
                       className={`text-xs flex items-center justify-center mt-1 ${stat.positive ? 'text-green-500' : 'text-red-500'}`}
                       animate={{ 
-                        scale: [1, 1.1, 1],
+                        scale: [1, 1.05, 1],
                       }}
                       transition={{ 
                         duration: 2,
@@ -208,38 +208,41 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Card className="crypto-card backdrop-blur-sm bg-card/80 border-primary/20 shadow-2xl">
-                <div className="p-4 md:p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-bold text-foreground">Quick Trade</h3>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {currentTime.toLocaleTimeString()}
+              <Card className="crypto-card backdrop-blur-sm bg-card/90 border-primary/20 shadow-xl lg:shadow-2xl">
+                <div className="p-3 sm:p-4 md:p-6">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Quick Trade</h3>
+                    <div className="flex items-center text-xs sm:text-sm text-muted-foreground">
+                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <span className="hidden sm:inline">{currentTime.toLocaleTimeString()}</span>
+                      <span className="sm:hidden">{currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3">
                       <Button 
                         variant={orderType === "buy" ? "default" : "outline"}
                         onClick={() => setOrderType("buy")}
-                        className="w-full"
+                        className="w-full text-sm sm:text-base"
+                        size="sm"
                       >
                         Buy
                       </Button>
                       <Button 
                         variant={orderType === "sell" ? "default" : "outline"}
                         onClick={() => setOrderType("sell")}
-                        className="w-full"
+                        className="w-full text-sm sm:text-base"
+                        size="sm"
                       >
                         Sell
                       </Button>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Asset</label>
+                      <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Asset</label>
                       <Select value={selectedAsset} onValueChange={setSelectedAsset}>
-                        <SelectTrigger>
+                        <SelectTrigger className="h-9 sm:h-10 text-sm">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -252,19 +255,20 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Amount</label>
+                      <label className="block text-xs sm:text-sm font-medium text-foreground mb-1 sm:mb-2">Amount</label>
                       <Input
                         placeholder="Enter amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         type="number"
+                        className="h-9 sm:h-10 text-sm"
                       />
                     </div>
 
                     <Link to="/exchange" className="block">
-                      <Button className="btn-crypto w-full">
+                      <Button className="btn-crypto w-full h-9 sm:h-10 text-sm sm:text-base">
                         Find {orderType === "buy" ? "Sellers" : "Buyers"}
-                        <Search className="ml-2 w-4 h-4" />
+                        <Search className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                       </Button>
                     </Link>
                   </div>
