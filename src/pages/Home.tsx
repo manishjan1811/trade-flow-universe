@@ -87,7 +87,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section with 3D Background and Quick Trade */}
-      <section className="relative py-8 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
+      <section className="relative py-6 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-screen flex items-center">
         {/* Geometric Background Shapes */}
         <GeometricBackground />
         
@@ -99,17 +99,29 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="text-center mb-8"
+              className="text-center mb-10"
             >
+              <motion.div
+                className="mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-4">
+                  <span className="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
+                  <span className="text-xs font-medium text-primary">Live Trading Platform</span>
+                </div>
+              </motion.div>
+
               <motion.h1 
-                className="text-3xl font-bold text-foreground mb-4 leading-tight"
+                className="text-4xl font-bold text-foreground mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Trade Crypto 
                 <motion.span 
-                  className="gradient-primary bg-clip-text text-transparent block mt-1"
+                  className="gradient-primary bg-clip-text text-transparent block mt-2 text-[2.5rem] font-extrabold"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
@@ -119,17 +131,17 @@ export default function Home() {
               </motion.h1>
               
               <motion.p 
-                className="text-muted-foreground mb-6 leading-relaxed px-2"
+                className="text-muted-foreground mb-8 leading-relaxed px-4 text-base"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Connect directly with traders worldwide. Zero fees, instant settlements.
+                Connect directly with trusted traders worldwide. Zero fees, instant settlements, and military-grade security.
               </motion.p>
               
-              {/* Mobile Action Buttons */}
+              {/* Mobile Action Buttons - Professional Design */}
               <motion.div 
-                className="space-y-3 mb-8"
+                className="space-y-4 mb-10 px-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -138,107 +150,214 @@ export default function Home() {
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    className="relative group"
                   >
-                    <Button size="lg" className="btn-crypto w-full h-14 text-lg font-semibold">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <Button variant="premium" size="xl" className="relative w-full">
+                      <span className="mr-2">🚀</span>
                       Start Trading Now
-                      <ArrowRight className="w-5 h-5 ml-2" />
+                      <motion.div
+                        className="ml-2"
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="w-5 h-5" />
+                      </motion.div>
                     </Button>
                   </motion.div>
                 </Link>
+                
                 <Link to="/register">
-                  <Button size="lg" variant="outline" className="w-full h-12 text-base">
-                    Create Free Account
-                  </Button>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button variant="professional" size="lg" className="w-full">
+                      <span className="mr-2">⚡</span>
+                      Create Free Account
+                    </Button>
+                  </motion.div>
                 </Link>
+
+                <motion.div 
+                  className="flex items-center justify-center gap-6 pt-4 text-xs text-muted-foreground"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.2 }}
+                >
+                  <div className="flex items-center">
+                    <Shield className="w-4 h-4 mr-1 text-accent" />
+                    <span>Secure</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Zap className="w-4 h-4 mr-1 text-accent" />
+                    <span>Instant</span>
+                  </div>
+                  <div className="flex items-center">
+                    <DollarSign className="w-4 h-4 mr-1 text-accent" />
+                    <span>Zero Fees</span>
+                  </div>
+                </motion.div>
               </motion.div>
 
-              {/* Mobile Quick Stats Grid */}
-              <StaggeredCards className="grid grid-cols-2 gap-3 mb-8">
+              {/* Mobile Quick Stats Grid - Enhanced */}
+              <StaggeredCards className="grid grid-cols-2 gap-4 mb-10">
                 {quickStats.map((stat, index) => (
                   <motion.div 
                     key={stat.label} 
-                    className="bg-card/70 backdrop-blur-sm rounded-xl p-4 border border-primary/10 text-center"
-                    whileHover={{ scale: 1.05 }}
+                    className="relative group"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                   >
-                    <div className="text-lg font-bold text-foreground">{stat.value}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
-                    <div className={`text-xs mt-1 flex items-center justify-center ${stat.positive ? 'text-green-500' : 'text-red-500'}`}>
-                      {stat.positive ? <ArrowUpRight className="w-3 h-3 mr-1" /> : <ArrowDownRight className="w-3 h-3 mr-1" />}
-                      {stat.change}
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
+                    <div className="relative bg-card/80 backdrop-blur-md rounded-xl p-5 border border-primary/10 text-center hover:bg-card/90 transition-all duration-300">
+                      <PulsingElement duration={2 + index * 0.5}>
+                        <div className="text-xl font-bold text-foreground mb-1">{stat.value}</div>
+                      </PulsingElement>
+                      <div className="text-xs text-muted-foreground mb-2">{stat.label}</div>
+                      <motion.div 
+                        className={`text-xs flex items-center justify-center font-medium ${stat.positive ? 'text-accent' : 'text-destructive'}`}
+                        animate={{ 
+                          scale: [1, 1.05, 1],
+                        }}
+                        transition={{ 
+                          duration: 2,
+                          delay: index * 0.2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        {stat.positive ? <ArrowUpRight className="w-3 h-3 mr-1" /> : <ArrowDownRight className="w-3 h-3 mr-1" />}
+                        {stat.change}
+                      </motion.div>
                     </div>
                   </motion.div>
                 ))}
               </StaggeredCards>
             </motion.div>
 
-            {/* Mobile Quick Trade Panel */}
+            {/* Mobile Quick Trade Panel - Professional Design */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative group"
             >
-              <Card className="crypto-card backdrop-blur-sm bg-card/95 border-primary/20 shadow-2xl">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent/30 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+              <Card className="relative crypto-card backdrop-blur-md bg-card/90 border-primary/30 shadow-2xl rounded-2xl overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-bold text-foreground">Quick Trade</h3>
-                    <div className="flex items-center text-sm text-muted-foreground">
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center mr-3">
+                        <TrendingUp className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground">Quick Trade</h3>
+                        <p className="text-xs text-muted-foreground">Start trading in seconds</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center text-sm text-muted-foreground bg-primary/10 px-3 py-1 rounded-full">
                       <Clock className="w-4 h-4 mr-1" />
                       {currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-5">
                     <div className="grid grid-cols-2 gap-3">
                       <Button 
-                        variant={orderType === "buy" ? "default" : "outline"}
+                        variant={orderType === "buy" ? "professional" : "outline"}
                         onClick={() => setOrderType("buy")}
                         className="w-full h-12 text-base font-medium"
                       >
-                        Buy
+                        <span className="mr-2">📈</span> Buy
                       </Button>
                       <Button 
-                        variant={orderType === "sell" ? "default" : "outline"}
+                        variant={orderType === "sell" ? "professional" : "outline"}
                         onClick={() => setOrderType("sell")}
                         className="w-full h-12 text-base font-medium"
                       >
-                        Sell
+                        <span className="mr-2">📉</span> Sell
                       </Button>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Choose Asset</label>
+                      <label className="block text-sm font-medium text-foreground mb-3 flex items-center">
+                        <Globe className="w-4 h-4 mr-2 text-primary" />
+                        Choose Asset
+                      </label>
                       <Select value={selectedAsset} onValueChange={setSelectedAsset}>
-                        <SelectTrigger className="h-12 text-base">
+                        <SelectTrigger className="h-14 text-base bg-background/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-colors">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="BTC">Bitcoin (BTC)</SelectItem>
-                          <SelectItem value="ETH">Ethereum (ETH)</SelectItem>
-                          <SelectItem value="USDT">Tether (USDT)</SelectItem>
-                          <SelectItem value="BNB">BNB (BNB)</SelectItem>
+                        <SelectContent className="backdrop-blur-md bg-card/90">
+                          <SelectItem value="BTC">
+                            <div className="flex items-center">
+                              <div className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center mr-2 text-xs font-bold text-white">₿</div>
+                              Bitcoin (BTC)
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="ETH">
+                            <div className="flex items-center">
+                              <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center mr-2 text-xs font-bold text-white">E</div>
+                              Ethereum (ETH)
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="USDT">
+                            <div className="flex items-center">
+                              <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center mr-2 text-xs font-bold text-white">₮</div>
+                              Tether (USDT)
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="BNB">
+                            <div className="flex items-center">
+                              <div className="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center mr-2 text-xs font-bold text-white">B</div>
+                              BNB (BNB)
+                            </div>
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Enter Amount</label>
-                      <Input
-                        placeholder="0.00"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        type="number"
-                        className="h-12 text-base text-center font-medium"
-                      />
+                      <label className="block text-sm font-medium text-foreground mb-3 flex items-center">
+                        <Wallet className="w-4 h-4 mr-2 text-primary" />
+                        Enter Amount
+                      </label>
+                      <div className="relative">
+                        <Input
+                          placeholder="0.00"
+                          value={amount}
+                          onChange={(e) => setAmount(e.target.value)}
+                          type="number"
+                          className="h-14 text-lg text-center font-medium bg-background/50 backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-colors pr-16"
+                        />
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground font-medium">
+                          {selectedAsset}
+                        </div>
+                      </div>
                     </div>
 
                     <Link to="/exchange" className="block">
-                      <Button className="btn-crypto w-full h-14 text-lg font-semibold">
-                        Find {orderType === "buy" ? "Sellers" : "Buyers"}
-                        <Search className="ml-2 w-5 h-5" />
-                      </Button>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="relative group"
+                      >
+                        <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-300"></div>
+                        <Button variant="premium" size="xl" className="relative w-full">
+                          <Search className="mr-2 w-5 h-5" />
+                          Find {orderType === "buy" ? "Sellers" : "Buyers"}
+                          <motion.div
+                            className="ml-2"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                            <ArrowRight className="w-5 h-5" />
+                          </motion.div>
+                        </Button>
+                      </motion.div>
                     </Link>
                   </div>
                 </div>
