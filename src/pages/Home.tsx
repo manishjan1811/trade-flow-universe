@@ -87,7 +87,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section with 3D Background and Quick Trade */}
-      <section className="relative py-2 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-[80vh] md:min-h-screen flex items-center">
+      <section className="relative pt-8 pb-2 md:py-12 lg:py-16 bg-gradient-to-br from-background via-card/20 to-background min-h-[80vh] md:min-h-screen flex items-center">
         {/* Geometric Background Shapes */}
         <GeometricBackground />
         
