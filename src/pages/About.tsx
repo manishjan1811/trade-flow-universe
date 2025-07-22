@@ -157,7 +157,7 @@ function InteractiveCard({ children, className = "", delay = 0 }: { children: Re
 
 export default function About() {
   return (
-    <div className="min-h-screen crypto-bg overflow-hidden">
+    <div className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section with Parallax */}
       <section className="relative py-16 md:py-32 lg:py-48 overflow-hidden">
         {/* Animated background shapes */}
