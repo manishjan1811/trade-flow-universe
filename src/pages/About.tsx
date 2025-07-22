@@ -592,14 +592,14 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 gradient-hero relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-primary to-accent relative overflow-hidden">
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-black/20 dark:bg-black/40"
           animate={{
             background: [
-              "linear-gradient(45deg, hsl(var(--primary)/0.1), hsl(var(--accent)/0.1))",
-              "linear-gradient(135deg, hsl(var(--accent)/0.1), hsl(var(--primary)/0.1))",
-              "linear-gradient(225deg, hsl(var(--primary)/0.1), hsl(var(--accent)/0.1))",
+              "linear-gradient(45deg, hsl(var(--primary)/0.2), hsl(var(--accent)/0.2))",
+              "linear-gradient(135deg, hsl(var(--accent)/0.2), hsl(var(--primary)/0.2))",
+              "linear-gradient(225deg, hsl(var(--primary)/0.2), hsl(var(--accent)/0.2))",
             ],
           }}
           transition={{
@@ -620,7 +620,7 @@ export default function About() {
             Ready to Join the Revolution?
           </motion.h2>
           <motion.p
-            className="text-xl md:text-2xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -638,13 +638,13 @@ export default function About() {
             viewport={{ once: true }}
           >
             <Link to="/register">
-              <Button size="lg" className="bg-white text-background hover:bg-white/90 text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
                 Start Trading Now
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-background text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary text-xl px-12 py-8 hover:scale-105 transition-transform duration-300">
                 Contact Us
                 <ChevronRight className="ml-3 w-6 h-6" />
               </Button>
